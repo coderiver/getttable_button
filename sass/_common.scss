@@ -1,0 +1,124 @@
+// # SHORT HOWTO
+// ## Sprites
+//     .whatever{ 
+//         @include sized-sprite($icons, badge_hit); //or
+//         @include s($i, badge_hit);
+//     }
+// ### animation example
+//     @include keyframes(rotate) {
+//        from {
+//           @include rotate(0);
+//        }
+//        to {
+//           @include rotate(360);
+//         }
+//     }
+// ## animation usage
+//     body:hover{
+// 	    @include animation(rotate 200s linear infinite);
+//     }
+// ## animations easing, see easings.net for full list and examples, tnx @ai
+//     transition: all 1.2s ceaser($ease-in);
+// ## gradient example
+//     @include background-image(linear-gradient(#232323, #5c5c5c));
+// ## making bw-images
+//     img{@extend %gray;}
+// ## predefined media-queries: https://github.com/paranoida/sass-mediaqueries
+//     @min-screen(320){ css goes here}
+// @max-screen(1000), @iphone5, @iphone4, @ipad-retina, @ipad, @hdpi - also available
+//
+// ## use cycles
+//     @for $i from 1 through 3 {
+//       .item-#{$i} { width: 2em * $i; }
+//     }
+//     @each $s in a,b,c{
+// 	    #{$s}
+//     }
+// BTW these comments will not render into css
+// for awesomeness use .🍺 class. Example:
+// .🍺{beer:everything}
+
+//*{-webkit-transition: .3s all;}
+
+*{margin:0;padding:0; }
+@include iphone{*{-webkit-text-size-adjust: none;}}
+button::-moz-focus-inner { padding: 0; border: 0 }
+input[type="submit"]::-moz-focus-inner { padding: 0; border: 0 }
+
+body{
+	font: {
+		family: Arial,sans-serif;
+		weight: normal;
+		size: 12px;
+	}
+	line-height:1.4;
+}
+// resets
+a img,fieldset{
+	border:none;
+}
+
+.out-list{
+	width: 816px;
+	margin: 0 auto;
+	list-style: none;
+	overflow: hidden;
+	li{
+		float: left;
+		padding: 21px 24px;
+	}
+}
+
+
+@mixin gt-btn() {
+	width: 156px;
+	border-radius:4px;
+	display: block;
+	font:bold 10px/12px Verdana,Helvetica,sans-serif;
+	text-decoration: none;
+	height: 30px;
+	padding-top: 5px;
+	@include background-image(linear-gradient(rgba(255,255,255,.15), rgba(0,0,0,.15)));
+	&:hover{
+		@include background-image(linear-gradient(rgba(255,255,255,.07), rgba(0,0,0,.07)));
+		.gt-btn__icon{background: inline-image("gt_h.png") no-repeat;}
+	}
+	&:active{
+		@include background-image(linear-gradient(rgba(0,0,0,.15), rgba(255,255,255,.15)));
+		.gt-btn__icon{background: inline-image("gt_a.png") no-repeat;}
+	}
+	.gt-btn__icon{
+		float: left;
+		height: 35px;
+		width: 46px;
+		margin: -5px 5px 0 0;
+		background: inline-image("gt.png") no-repeat;
+	}
+}
+
+
+// 1 - class name
+// 2 - background color
+// 3 - text color
+
+$btn : gray #585d66 #fff, green #307924 #fff, blue #2b7cda #fff;
+@each $i in $btn{
+	.gt-btn_#{nth($i,1)}{
+		background: #{nth($i,2)};
+		color: #{nth($i,3)};
+
+		text-shadow:0 -1px 0 rgba(0,0,0,.25);
+		box-shadow:0 1px 2px rgba(38,40,44,.54), 0 -2px 0 rgba(0,0,0,.2) inset, 0 2px 0 rgba(255,255,255,.15) inset;
+		&:active{text-shadow:0 1px 2px rgba(0,0,0,.35);}
+		@include gt-btn();
+	}
+}
+
+// button without text-shadow
+
+.gt-btn_white{
+	background: #fff;
+	color: #4d5159;
+	box-shadow:0 1px 2px rgba(38,40,44,.54), 0 -2px 0 rgba(0,0,0,.2) inset, 0 2px 0 rgba(255,255,255,.15) inset, 0 0 0 1px #cdced2 inset;
+	@include gt-btn();
+}
