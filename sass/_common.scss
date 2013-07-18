@@ -32,9 +32,13 @@ a img,fieldset{border:none;}
 	text-decoration: none;
 	height: 30px;
 	padding-top: 5px;
+	color: #fff;
+	text-decoration: none;
 	@include background-image(linear-gradient(rgba(255,255,255,.15), rgba(0,0,0,.15)));
 	&:hover{
 		@include background-image(linear-gradient(rgba(255,255,255,.07), rgba(0,0,0,.07)));
+		color: #ffffff;
+		text-decoration: none;
 		.gt-btn__icon{background: inline-image("gt_h.png") no-repeat;}
 	}
 	&:active{
@@ -75,4 +79,8 @@ $btn : gray #585d66, green #307924, blue #2b7cda;
 	color: #4d5159;
 	box-shadow:0 1px 2px rgba(38,40,44,.54), 0 -2px 0 rgba(0,0,0,.2) inset, 0 2px 0 rgba(255,255,255,.15) inset, 0 0 0 1px #cdced2 inset;
 	@include gt-btn();
+	&:hover{
+		color: #fff;
+		text-decoration: none;
+	}
 }
