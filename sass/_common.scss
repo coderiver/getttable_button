@@ -32,7 +32,7 @@ a img,fieldset{border:none;}
 	text-decoration: none;
 	height: 30px;
 	padding-top: 5px;
-	color: #fff;
+	//color: #fff;
 	text-decoration: none;
 	@include background-image(linear-gradient(rgba(255,255,255,.15), rgba(0,0,0,.15)));
 	&:hover{
@@ -80,7 +80,7 @@ $btn : gray #585d66, green #307924, blue #2b7cda;
 	box-shadow:0 1px 2px rgba(38,40,44,.54), 0 -2px 0 rgba(0,0,0,.2) inset, 0 2px 0 rgba(255,255,255,.15) inset, 0 0 0 1px #cdced2 inset;
 	@include gt-btn();
 	&:hover{
-		color: #fff;
+		color: #4d5159;
 		text-decoration: none;
 	}
 }
